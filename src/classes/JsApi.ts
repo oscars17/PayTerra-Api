@@ -16,6 +16,22 @@ export class PayTerraProcessing implements PayTerraProcessingInterface {
   processPaymentUrl = 'https://staging.payterra.biz/rest/js_pay/simple/';
   orderInfoUrl = 'https://staging.payterra.biz/rest/js_pay/orderinfo/';
 
+
+  /**
+   *
+   * @param e - error obj
+   * @return {commonErrorType} - returns error object
+   */
+  _errorGenerator(e): commonErrorType {
+    let errorData = {} as commonErrorType;
+    if (axios.isAxiosError(e) && e.response) {
+          errorData = e.response.data as commonErrorType;
+    } else {
+      errorData = {message: "Unknown error", data: "Unknown error"}
+    }
+    return errorData;
+  }
+
   /**
      * Method for payment processing.
      * @param {processPaymentRequestType} payload - request payload.
@@ -29,9 +45,7 @@ export class PayTerraProcessing implements PayTerraProcessingInterface {
     await axios.post<processPaymentResponseType>(
         requestUrl, payload)
         .then((r) => responseData = r.data)
-        .catch((e) =>           {if (axios.isAxiosError(e) && e.response) {
-          responseData = e.response.data as commonErrorType;
-        }})
+        .catch((e) => this._errorGenerator(e))
     return responseData;
   }
 
@@ -47,11 +61,7 @@ export class PayTerraProcessing implements PayTerraProcessingInterface {
     delete payload.staging
     await axios.post<orderInfoResponseType>(
         requestUrl, payload)
-        .then((r) => responseData = r.data).catch((e) => {
-          if (axios.isAxiosError(e) && e.response) {
-            responseData = e.response.data as commonErrorType;
-          }
-        });
+        .then((r) => responseData = r.data).catch((e) => this._errorGenerator(e));
     return responseData;
   }
 }
