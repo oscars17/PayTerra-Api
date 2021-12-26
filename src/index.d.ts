@@ -6,6 +6,8 @@ import {orderInfoRequestType, orderInfoResponseType} from "./models/orderInfoTyp
 export declare class PayTerraProcessing implements PayTerraProcessingInterface {
     processPaymentUrl: string;
     orderInfoUrl: string;
+    stagingProcessPaymentUrl: string;
+    stagingOrderInfoUrl: string;
 
     processPaymentRequest(payload: processPaymentRequestType):Promise<processPaymentResponseType | commonErrorType>
     orderInfoRequest(payload: orderInfoRequestType):Promise<orderInfoResponseType | commonErrorType>
