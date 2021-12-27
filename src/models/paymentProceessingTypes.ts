@@ -7,6 +7,16 @@ export type shopType = {
     site: string | null
 }
 
+export type ThreedsDataType = {
+    "action":string,
+    "method":string,
+    "params":{
+        "MD":string,
+        "PaReq":string,
+        "TermUrl":string
+    }
+}
+
 export type orderType = {
     [key: string]: any;
     id: number,
@@ -28,7 +38,7 @@ export type orderType = {
     pan_bin: string,
     sended_sms: boolean | null,
     writeoff__code_repeat: number | null,
-    threeds_data: Record<string, string> | null,
+    threeds_data: ThreedsDataType | null,
     description: string,
     test_mode: boolean,
     success_url: string,

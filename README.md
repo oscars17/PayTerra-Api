@@ -57,7 +57,14 @@ instance.processPaymentRequest(payload)
             "pan_bin": string,
             "sended_sms": boolean или null,
             "writeoff__code_repeat": number или null,
-            "threeds_data": {} or null,
+            "threeds_data":{
+                "action":string,
+                "method":string,
+                "params":{
+                    "MD":string,
+                    "PaReq":string,
+                    "TermUrl":string
+                } или null,
             "description": string,
             "test_mode": boolean,
             "success_url": string,
@@ -69,7 +76,7 @@ instance.processPaymentRequest(payload)
             "status_str": string,
             "fake_number": string,
             "writeoff__order": string или null,
-            "available_payment_methods": [],
+            "available_payment_methods": string[],
             "parent_for_recurrent": boolean или null,
             "paymentgate_success_url": string,
             "paymentgate_error_url": string
