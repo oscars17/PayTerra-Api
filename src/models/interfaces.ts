@@ -1,4 +1,4 @@
-export interface PayTerraProcessingInterface {
+export interface PayTerraApiInterface {
     processPaymentUrl: string,
     orderInfoUrl: string,
     stagingProcessPaymentUrl: string,

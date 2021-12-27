@@ -21,8 +21,8 @@ export type orderInfoResponseType = {
     created_date: string,
     pan_mask: string,
     payment_type: string,
-    payment_account: any, // waiting for examples of element
-    payment_account_detail: any, // waiting for examples of element
+    payment_account: string,
+    payment_account_detail: string | null,
     error_code: string,
     error_message: string
 }

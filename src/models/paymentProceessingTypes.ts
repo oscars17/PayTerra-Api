@@ -4,7 +4,7 @@ export type shopType = {
     title: string,
     success_url: string,
     key: string,
-    site: any // waiting for examples of element
+    site: string | null
 }
 
 export type orderType = {
@@ -26,22 +26,22 @@ export type orderType = {
     is_active: boolean,
     pan_mask: string,
     pan_bin: string,
-    sended_sms: any, // waiting for examples of element
-    writeoff__code_repeat: any, // waiting for examples of element
-    threeds_data: any, // waiting for examples of element
+    sended_sms: boolean | null,
+    writeoff__code_repeat: number | null,
+    threeds_data: Record<string, string> | null,
     description: string,
     test_mode: boolean,
     success_url: string,
     fail_url: string,
     can_refund_amount: number,
-    payment__means_of_payment: any, // waiting for examples of element
+    payment__means_of_payment: string | null,
     payment_method: string,
-    payout__means_of_payment: any, // waiting for examples of element
+    payout__means_of_payment: string | null,
     status_str: string,
     fake_number: string,
-    writeoff__order: any, // waiting for examples of element
+    writeoff__order: string | null,
     available_payment_methods: string[],
-    parent_for_recurrent: any, // waiting for examples of element
+    parent_for_recurrent: boolean | null,
     paymentgate_success_url: string,
     paymentgate_error_url: string
 }
