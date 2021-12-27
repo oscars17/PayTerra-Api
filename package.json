@@ -1,5 +1,5 @@
 {
-  "name": "payterra-api",
+  "name": "payterra-js-pay",
   "version": "0.0.4",
   "description": "PayTerra API",
   "main": "src/index.ts",
