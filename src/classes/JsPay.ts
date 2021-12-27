@@ -1,4 +1,4 @@
-import {PayTerraApiInterface} from '../models/interfaces';
+import {PayTerraJsPayInterface} from '../models/interfaces';
 import {
   processPaymentRequestType,
   processPaymentResponseType} from '../models/paymentProceessingTypes';
@@ -10,7 +10,7 @@ import {commonErrorType} from "../models/errorTypes";
 
 
 /** Class representing an entry point for PayTerra requests. */
-export class PayTerraApi implements PayTerraApiInterface {
+export class PayTerraJsPay implements PayTerraJsPayInterface {
   stagingProcessPaymentUrl = 'https://staging.payterra.biz/rest/js_pay/simple/';
   stagingOrderInfoUrl = 'https://staging.payterra.biz/rest/js_pay/orderinfo/';
   processPaymentUrl = 'https://staging.payterra.biz/rest/js_pay/simple/';

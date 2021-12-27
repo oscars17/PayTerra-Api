@@ -8,12 +8,12 @@ export type shopType = {
 }
 
 export type ThreedsDataType = {
-    "action":string,
-    "method":string,
-    "params":{
-        "MD":string,
-        "PaReq":string,
-        "TermUrl":string
+    action:string,
+    method:string,
+    params:{
+        MD:string,
+        PaReq:string,
+        TermUrl:string
     }
 }
 

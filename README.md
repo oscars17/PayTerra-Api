@@ -1,12 +1,12 @@
 Установка библиотеки
 ```
-npm install payterra-api
-yarn add payterra-api
+npm install payterra-js-pay
+yarn add payterra-js-pay
 ```
 Подлючение библиотеки 
 ```
-    import {PayTerraApi} from "payterra-api";
-    const instance = new PayTerraApi();
+    import {PayTerraJsPay} from "payterra-js-pay";
+    const jsPayInstance = new PayTerraJsPay();
 ```
 
 Запрос на проведение платежа с карточными данными

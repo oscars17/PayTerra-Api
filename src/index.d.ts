@@ -1,9 +1,9 @@
-import {PayTerraApiInterface} from "./models/interfaces";
+import {PayTerraJsPayInterface} from "./models/interfaces";
 import {processPaymentRequestType, processPaymentResponseType} from "./models/paymentProceessingTypes";
 import {commonErrorType} from "./models/errorTypes";
 import {orderInfoRequestType, orderInfoResponseType} from "./models/orderInfoTypes";
 
-export declare class PayTerraProcessing implements PayTerraApiInterface {
+export declare class PayTerraJsPay implements PayTerraJsPayInterface {
     processPaymentUrl: string;
     orderInfoUrl: string;
     stagingProcessPaymentUrl: string;

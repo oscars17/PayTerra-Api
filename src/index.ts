@@ -1,1 +1,1 @@
-export {PayTerraApi} from './classes/JsPay';
+export {PayTerraJsPay} from './classes/JsPay';
