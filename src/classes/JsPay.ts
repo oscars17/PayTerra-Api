@@ -62,7 +62,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     delete payload.staging
     await axios.post<orderInfoResponseType>(
         requestUrl, payload)
-        .then((r) => {responseData = r.data; console.log(r)}).catch((e) => this._errorGenerator(e));
+        .then((r) => responseData = r.data).catch((e) => this._errorGenerator(e));
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
