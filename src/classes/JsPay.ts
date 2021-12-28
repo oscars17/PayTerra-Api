@@ -35,6 +35,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     if (axios.isAxiosError(e) && e.response) {
           errorData = e.response.data as commonErrorType;
     } else {
+      console.log(e)
       errorData = {message: "Unknown error", data: "Unknown error"}
     }
     return errorData;
@@ -58,7 +59,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
             typeof redirect === "object" && redirect.status
                 ? this.goTo(r.data.threeds_url, redirect.sameWindow)
                 : responseData = r.data)
-        .catch((e) => this.errorGenerator(e))
+        .catch((e) => responseData = this.errorGenerator(e))
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
@@ -76,7 +77,8 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     delete payload.staging
     await axios.post<orderInfoResponseType>(
         requestUrl, payload)
-        .then((r) => responseData = r.data).catch((e) => this.errorGenerator(e));
+        .then((r) => responseData = r.data)
+        .catch((e) => responseData = this.errorGenerator(e));
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
