@@ -20,8 +20,8 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
    * Method for url redirecting
    * @param(url) - url for redirect
    */
-  private goTo(url:string, sameWindow:boolean):void {
-    window.open(url, sameWindow ? "_self" : "_blank");
+  private goTo(url:string):void {
+    window.open(url, "_self");
   }
 
 
@@ -56,8 +56,8 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     await axios.post<processPaymentResponseType>(
         requestUrl, payload)
         .then((r) =>
-            typeof redirect === "object" && redirect.status
-                ? this.goTo(r.data.threeds_url, redirect.sameWindow)
+            redirect
+                ? this.goTo(r.data.threeds_url)
                 : responseData = r.data)
         .catch((e) => responseData = this.errorGenerator(e))
     return Object.keys(responseData).length !== 0 ?

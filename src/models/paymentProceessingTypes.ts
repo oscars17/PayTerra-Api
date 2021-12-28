@@ -1,8 +1,3 @@
-export type redirectType = {
-    sameWindow: boolean,
-    status: boolean
-}
-
 export type shopType = {
     [key: string]: any;
     id: number,
@@ -77,7 +72,7 @@ export type processPaymentRequestType = {
     order_currency: string,
     secret_key: string,
     staging?: boolean,
-    redirect?: redirectType
+    redirect?: boolean
 }
 
 export type processPaymentResponseType = {
