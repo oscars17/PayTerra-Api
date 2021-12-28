@@ -20,7 +20,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
    * Method for url redirecting
    * @param(url) - url for redirect
    */
-  private goTo(url:string):void {
+  private static goTo(url:string):void {
     window.open(url, "_self");
   }
 
@@ -30,7 +30,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
    * @param e - error obj
    * @return {commonErrorType} - returns error object
    */
-  private errorGenerator(e): commonErrorType {
+  private static errorGenerator(e): commonErrorType {
     let errorData = {} as commonErrorType;
     if (axios.isAxiosError(e) && e.response) {
           errorData = e.response.data as commonErrorType;
@@ -49,17 +49,19 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
   async processPaymentRequest(payload: processPaymentRequestType)
       : Promise<processPaymentResponseType | commonErrorType> {
     let responseData = {} as processPaymentResponseType | commonErrorType;
-    const requestUrl = payload.staging ? this.stagingProcessPaymentUrl : this.processPaymentUrl;
+    const requestUrl = payload.staging === true
+        ? this.stagingProcessPaymentUrl
+        : this.processPaymentUrl;
     delete payload.staging
     const redirect = payload.redirect
     delete payload.redirect
     await axios.post<processPaymentResponseType>(
         requestUrl, payload)
         .then((r) =>
-            redirect
-                ? this.goTo(r.data.threeds_url)
+            redirect === true
+                ? PayTerraJsPay.goTo(r.data.threeds_url)
                 : responseData = r.data)
-        .catch((e) => responseData = this.errorGenerator(e))
+        .catch((e) => responseData = PayTerraJsPay.errorGenerator(e))
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
@@ -73,12 +75,14 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
   async orderInfoRequest(payload: orderInfoRequestType)
       : Promise<orderInfoResponseType | commonErrorType> {
     let responseData = {} as orderInfoResponseType | commonErrorType;
-    const requestUrl = payload.staging ? this.stagingOrderInfoUrl : this.orderInfoUrl;
+    const requestUrl = payload.staging === true
+        ? this.stagingOrderInfoUrl
+        : this.orderInfoUrl;
     delete payload.staging
     await axios.post<orderInfoResponseType>(
         requestUrl, payload)
         .then((r) => responseData = r.data)
-        .catch((e) => responseData = this.errorGenerator(e));
+        .catch((e) => responseData = PayTerraJsPay.errorGenerator(e));
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
