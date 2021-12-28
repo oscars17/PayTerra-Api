@@ -23,6 +23,11 @@ const payload = {
     secret_key: string,
     //на текущий момент доступны запросы только на staging
     staging?: boolean 
+    // редирект на 3ds (threeds_url) в респонсе
+    redirect: {
+        sameWindow: boolean, //то же окно?
+        status: boolean // редиректить ли?
+    }
 }
 instance.processPaymentRequest(payload)
 ```

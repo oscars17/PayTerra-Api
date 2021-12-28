@@ -17,11 +17,20 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
   orderInfoUrl = 'https://staging.payterra.biz/rest/js_pay/orderinfo/';
 
   /**
-   *
+   * Method for url redirecting
+   * @param(url) - url for redirect
+   */
+  private goTo(url:string, sameWindow:boolean):void {
+    window.open(url, sameWindow ? "_self" : "_blank");
+  }
+
+
+  /**
+   * Method for error generating
    * @param e - error obj
    * @return {commonErrorType} - returns error object
    */
-  _errorGenerator(e): commonErrorType {
+  private errorGenerator(e): commonErrorType {
     let errorData = {} as commonErrorType;
     if (axios.isAxiosError(e) && e.response) {
           errorData = e.response.data as commonErrorType;
@@ -41,10 +50,15 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     let responseData = {} as processPaymentResponseType | commonErrorType;
     const requestUrl = payload.staging ? this.stagingProcessPaymentUrl : this.processPaymentUrl;
     delete payload.staging
+    const redirect = payload.redirect
+    delete payload.redirect
     await axios.post<processPaymentResponseType>(
         requestUrl, payload)
-        .then((r) => responseData = r.data)
-        .catch((e) => this._errorGenerator(e))
+        .then((r) =>
+            typeof redirect === "object" && redirect.status
+                ? this.goTo(r.data.threeds_url, redirect.sameWindow)
+                : responseData = r.data)
+        .catch((e) => this.errorGenerator(e))
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
@@ -62,7 +76,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     delete payload.staging
     await axios.post<orderInfoResponseType>(
         requestUrl, payload)
-        .then((r) => responseData = r.data).catch((e) => this._errorGenerator(e));
+        .then((r) => responseData = r.data).catch((e) => this.errorGenerator(e));
     return Object.keys(responseData).length !== 0 ?
         responseData :
         {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
