@@ -80,3 +80,18 @@ export type processPaymentResponseType = {
     threeds_url: string,
     order: orderType
 }
+
+export type registerCardRequestType = {
+    [key: string]: any;
+    card_data: {
+        card_number: string,
+        card_month: string,
+        card_year: string
+    },
+    shop_key: string
+}
+
+export type registerCardResponseType = {
+    [key: string]: any;
+    transaction_id: string
+}
