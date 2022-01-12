@@ -34,6 +34,6 @@ instance.transactionIdRequest(payload)
 ```
     {
         "message": string,
-        field name string: string
+        field name string: [string]
     }
 ```
