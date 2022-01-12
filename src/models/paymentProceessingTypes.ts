@@ -88,6 +88,7 @@ export type registerCardRequestType = {
         card_month: string,
         card_year: string
     },
+    staging?: boolean,
     shop_key: string
 }
 

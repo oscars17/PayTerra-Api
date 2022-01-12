@@ -21,5 +21,5 @@ export declare class PayTerraJsPay implements PayTerraJsPayInterface {
     processPaymentRequest(payload: processPaymentRequestType):Promise<processPaymentResponseType | commonErrorType>
     orderInfoRequest(payload: orderInfoRequestType):Promise<orderInfoResponseType | commonErrorType>
     */
-    registerCardRequest(payload: registerCardRequestType): Promise<registerCardResponseType | commonErrorType>;
+    transactionIdRequest(payload: registerCardRequestType): Promise<registerCardResponseType | commonErrorType>;
 }

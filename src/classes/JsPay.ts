@@ -43,7 +43,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
           errorData = e.response.data as commonErrorType;
     } else {
       console.log(e)
-      errorData = {message: "Unknown error", data: "Unknown error"}
+      errorData = {message: "Unknown error", data: ["Unknown error"]}
     }
     return errorData;
   }
@@ -103,7 +103,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
    * @param {registerCardRequestType} payload - request payload.
    * @return {registerCardRequestType} response - response data.
    */
-  async registerCardRequest(payload: registerCardRequestType): Promise<registerCardResponseType | commonErrorType> {
+  async transactionIdRequest(payload: registerCardRequestType): Promise<registerCardResponseType | commonErrorType> {
     let responseData = {} as registerCardResponseType | commonErrorType;
     const requestUrl = payload.staging === true
         ? this.stagingRegisterCardUrl
@@ -115,6 +115,6 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
         .catch((e) => responseData = PayTerraJsPay.errorGenerator(e));
     return Object.keys(responseData).length !== 0
         ? responseData
-        : {message: "Wrong secret key", data: "Wrong secret key"} as commonErrorType;
+        : {message: "Wrong secret key", data: ["Wrong secret key"]} as commonErrorType;
   }
 }
