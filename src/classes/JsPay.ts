@@ -18,7 +18,7 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
   processPaymentUrl = 'https://staging.payterra.biz/rest/js_pay/simple/';
   orderInfoUrl = 'https://staging.payterra.biz/rest/js_pay/orderinfo/';
   */
-  registerCardUrl = 'https://staging.payterra.biz/rest/js_pay/registercard/';
+  registerCardUrl = 'https://payterra.biz/rest/js_pay/registercard/';
   stagingRegisterCardUrl = 'https://staging.payterra.biz/rest/js_pay/registercard/';
 
   /**

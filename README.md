@@ -20,7 +20,8 @@ const payload = {
     },
     shop_key: string
 }
-instance.transactionIdRequest(payload)
+
+await? instance.transactionIdRequest(payload)
 ```
 
 Ответ на получение данных по заказу

@@ -1,6 +1,6 @@
 {
   "name": "payterra-js-pay",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "PayTerra API",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
