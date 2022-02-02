@@ -7,7 +7,8 @@ import {
 import {commonErrorType} from "./models/errorTypes";
 import {orderInfoRequestType, orderInfoResponseType} from "./models/orderInfoTypes";
 
-export class PayTerraJsPay implements PayTerraJsPayInterface {
+declare module PayterraJsPay {
+    export class PayTerraJsPay implements PayTerraJsPayInterface {
     /*
     processPaymentUrl: string;
     orderInfoUrl: string;
@@ -22,4 +23,5 @@ export class PayTerraJsPay implements PayTerraJsPayInterface {
     orderInfoRequest(payload: orderInfoRequestType):Promise<orderInfoResponseType | commonErrorType>
     */
     transactionIdRequest(payload: registerCardRequestType): Promise<registerCardResponseType | commonErrorType>;
+    }
 }
