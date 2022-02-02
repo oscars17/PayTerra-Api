@@ -3,11 +3,11 @@ import {
   processPaymentRequestType,
   processPaymentResponseType, registerCardRequestType, registerCardResponseType
 } from '../models/paymentProceessingTypes';
-import axios from 'axios';
 import {
   orderInfoRequestType,
   orderInfoResponseType} from '../models/orderInfoTypes';
 import {commonErrorType} from "../models/errorTypes";
+import axios from 'axios';
 
 
 /** Class representing an entry point for PayTerra requests. */

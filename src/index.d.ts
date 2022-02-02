@@ -7,7 +7,7 @@ import {
 import {commonErrorType} from "./models/errorTypes";
 import {orderInfoRequestType, orderInfoResponseType} from "./models/orderInfoTypes";
 
-export declare class PayTerraJsPay implements PayTerraJsPayInterface {
+export class PayTerraJsPay implements PayTerraJsPayInterface {
     /*
     processPaymentUrl: string;
     orderInfoUrl: string;
