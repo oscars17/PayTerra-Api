@@ -1,21 +1,25 @@
 {
   "name": "payterra-js-pay",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "PayTerra API",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
-  "files": [
-    "/src"
-  ],
-  "author": "Chipans Oscars",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.24.0"
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "build": "rollup -c"
   },
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
-    "eslint": "^8.4.0",
-    "eslint-config-google": "^0.14.0"
+    "rollup": "^2.67.0",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "axios": "^0.25.0"
   }
 }

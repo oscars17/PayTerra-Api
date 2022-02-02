@@ -1,13 +1,8 @@
-import {PayTerraJsPayInterface} from '../models/interfaces';
-import {
-  processPaymentRequestType,
-  processPaymentResponseType, registerCardRequestType, registerCardResponseType
-} from '../models/paymentProceessingTypes';
-import {
-  orderInfoRequestType,
-  orderInfoResponseType} from '../models/orderInfoTypes';
-import {commonErrorType} from "../models/errorTypes";
-import axios from 'axios';
+import {PayTerraJsPayInterface} from './models/interfaces';
+import {registerCardRequestType, registerCardResponseType
+} from './models/paymentProceessingTypes';
+import {commonErrorType} from "./models/errorTypes";
+import axios from "axios";
 
 
 /** Class representing an entry point for PayTerra requests. */
