@@ -67,32 +67,33 @@ export type idDataType = {
 
 export type processPaymentRequestType = {
     [key: string]: any;
-    amount: number,
-    id_data: idDataType,
-    order_currency: string,
-    secret_key: string,
-    staging?: boolean,
-    redirect?: boolean
+    amount: number;
+    id_data: idDataType;
+    order_currency: string;
+    secret_key: string;
+    staging?: boolean;
+    redirect?: boolean;
 }
 
 export type processPaymentResponseType = {
     [key: string]: any;
-    threeds_url: string,
-    order: orderType
+    threeds_url: string;
+    order: orderType;
 }
 
 export type registerCardRequestType = {
     [key: string]: any;
     card_data: {
-        card_number: string,
-        card_month: string,
-        card_year: string
+        card_number: string;
+        card_month: string;
+        card_year: string;
     },
-    staging?: boolean,
-    shop_key: string
+    staging?: boolean;
+    shop_key: string;
 }
 
 export type registerCardResponseType = {
     [key: string]: any;
-    transaction_id: string
+    transaction_id: string;
+    card_token: string;
 }
