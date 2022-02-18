@@ -13,7 +13,8 @@ const payload = {
     card_data: {
         card_number: string,
         card_month: string,
-        card_year: string
+        card_year: string,
+        cvv: string
     },
     shop_key: string
 }

@@ -87,6 +87,7 @@ export type registerCardRequestType = {
         card_number: string;
         card_month: string;
         card_year: string;
+        cvv: string;
     },
     staging?: boolean;
     shop_key: string;
